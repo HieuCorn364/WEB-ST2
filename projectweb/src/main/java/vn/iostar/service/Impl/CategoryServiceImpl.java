@@ -17,32 +17,36 @@ public class CategoryServiceImpl implements ICategoryService {
 
 	@Override
 	public CategoryEntity findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return categoryDao.findById(id);
 	}
 
 	@Override
 	public void insert(CategoryEntity category) {
-		// TODO Auto-generated method stub
+		categoryDao.insert(category);
 		
 	}
 
 	@Override
 	public void update(CategoryEntity category) {
-		// TODO Auto-generated method stub
-		
+		CategoryEntity categoryEntity = new CategoryEntity();
+		categoryEntity = categoryDao.findById(category.getCategoryId());
+		if(categoryEntity != null) {
+			categoryDao.update(category);
+		}
 	}
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-		
+		CategoryEntity categoryEntity = new CategoryEntity();
+		categoryEntity = categoryDao.findById(id);
+		if(categoryEntity != null) {
+			categoryDao.delete(id);
+		}
 	}
 
 	@Override
 	public List<CategoryEntity> findByName(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
+		return categoryDao.findByName(keyword);
 	}
 
 }
